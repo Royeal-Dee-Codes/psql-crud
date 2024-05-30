@@ -19,7 +19,7 @@ def create_tables():
     print("Creating tables...")
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS Companies (
-            company-id UUID PRIMARY KEY,
+            company_id UUID PRIMARY KEY,
             company_name VARCHAR NOT NULL UNIQUE
         );
     """)
