@@ -1,12 +1,12 @@
 CREATE TABLE IF NOT EXISTS Companies (
   company_id UUID PRIMARY KEY,
   company_name VARCHAR NOT NULL UNIQUE
-)
+);
 
 CREATE TABLE IF NOT EXISTS Categories (
   category_id UUID PRIMARY KEY,
   category_name VARCHAR NOT NULL UNIQUE
-)
+);
 
 CREATE TABLE IF NOT EXISTS Products (
   product_id UUID PRIMARY KEY,
@@ -14,14 +14,20 @@ CREATE TABLE IF NOT EXISTS Products (
   company_name VARCHAR NOT NULL UNIQUE,
   price INTEGER,
   description VARCHAR,
-  active BOOLEAN DEFAULT true
-)
+  active BOOLEAN DEFAULT TRUE
+);
 
 CREATE TABLE IF NOT EXISTS Warranties (
   warranty_id UUID PRIMARY KEY,
   product_id UUID REFERENCES Products(product_id),
   warranty_months VARCHAR NOT NULL
-)
+);
+
+CREATE TABLE ProductsCategoriesXref (
+  product_id UUID REFERENCES Products(product_id),
+  category_id UUID REFERENCES Categories(category_id),
+  PRIMARY KEY (product_id, category_id) 
+);
 
 //create_company
 INSERT INTO Companies (company_id, company_name) VALUES (1,1), (category_id, data['category_name])
