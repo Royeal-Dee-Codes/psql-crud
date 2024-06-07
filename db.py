@@ -1,12 +1,9 @@
 import os
 import psycopg2
-from dotenv import loaddotenv
-
-load_dotenv()
 
 DATABASE_NAME = os.environ.get("DATABASE_NAME")
 
-conn = pyscopg2.connect(f"dbname={DATABASE_NAME}")
+conn = psycopg2.connect(f"dbname={DATABASE_NAME}")
 cursor = conn.cursor()
 
 
