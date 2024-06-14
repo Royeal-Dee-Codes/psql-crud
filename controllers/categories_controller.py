@@ -29,7 +29,7 @@ def categories_get():
 
 
 def categories_get_by_id(category_id):
-    cursor.execute("SELECT * FROM Catefories WHERE category_id = %s", (category_id,))
+    cursor.execute("SELECT * FROM Categories WHERE category_id = %s", (category_id,))
     row = cursor.fetchone()
     if row:
         return dict(zip([desc[0] for desc in cursor.description], row))
