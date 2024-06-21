@@ -139,7 +139,7 @@ def warranty_get_by_id(request, warranty_id):
 
 # update
 def warranty_update(request, warranty_id):
-    post_data = request.form if request.form else request.jsonify
+    post_data = request.form if request.form else request.json
     warranty_id = post_data['warranty_id']
 
     cursor.execute(
@@ -166,7 +166,7 @@ def warranty_update(request, warranty_id):
                 WHERE warranty_id=%s
             """, [warranty_id]
         )
-        warranty = cursor.fetchone()
+        result = cursor.fetchone()
 
         warranty_list = []
 
