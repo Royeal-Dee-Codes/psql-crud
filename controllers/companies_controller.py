@@ -7,9 +7,8 @@ database = os.environ.get('DATABASE_NAME')
 conn = psycopg2.connect(f'dbname={database}')
 cursor = conn.cursor()
 
+
 # add
-
-
 def company_add(request):
     post_data = request.form if request.form else request.json
     company_name = post_data['company_name']
@@ -145,9 +144,9 @@ def company_update(request, company_id):
 
         cursor.execute(
             """
-            SELECT * FROM Companies
-            WHERE company_id=%s
-        """,
+                SELECT * FROM Companies
+                WHERE company_id=%s
+            """,
             [company_id]
         )
         company = cursor.fetchone()
@@ -223,7 +222,7 @@ def companies_get_by_activity(active_status):
 
 
 # activity
-def companies_acivity(company_id, active_status):
+def company_acivity(company_id, active_status):
     cursor.execute(
         """
             UPDATE Companies
